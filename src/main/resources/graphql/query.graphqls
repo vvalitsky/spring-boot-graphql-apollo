@@ -1,0 +1,24 @@
+type Query {
+    "The query which returns car info"
+    getCarInfo: Car!
+
+    _service: Service!
+}
+
+"""
+Car data type
+"""
+type Car {
+    "Car model"
+    model: String!
+    "Car power in kW"
+    power: String!
+    "Car manufacturer"
+    manufacturer: String!
+    "Car acceleration"
+    acceleration: String!
+}
+
+type Service {
+    sdl: String!
+}

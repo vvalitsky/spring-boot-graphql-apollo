@@ -1,0 +1,41 @@
+buildscript {
+    ext.kotlin_version = '1.3.72' // Required for Kotlin integration
+    ext.spring_boot_version = '2.3.1.RELEASE'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url("https://dl.bintray.com/apollographql/maven/")
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: "kotlin-spring"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "com.graphql-java:graphql-java-spring-boot-starter-webmvc:2019-06-24T11-47-27-31ab4f9"
+    implementation "com.graphql-java:graphql-java-tools:5.2.4"
+    implementation "com.graphql-java:graphiql-spring-boot-starter:5.0.2"
+    implementation "com.graphql-java:graphql-java-extended-scalars:2019-08-31T02-34-04-3decba9"
+    implementation "com.apollographql.federation:federation-graphql-java-support:0.4.0"
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

@@ -1,0 +1,18 @@
+type Mutation {
+    "Update car info mutation"
+    updateCarInfo(input: CarUpdateDto) : Car!
+}
+
+"""
+Car update info dto
+"""
+input CarUpdateDto {
+    "Car model"
+    model: String!
+    "Car power in kW"
+    power: String!
+    "Car manufacturer"
+    manufacturer: String!
+    "Car acceleration"
+    acceleration: String!
+}
