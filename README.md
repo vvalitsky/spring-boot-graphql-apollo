@@ -3,7 +3,7 @@
 ###### Official documentation about Spring -> https://spring.io
 ###### Official documentation about Apollo Federation -> https://www.apollographql.com/docs/apollo-server/federation/introduction/
 
-##### For starting Spring Boot:
+##### For starting Spring Boot
 ````
 
 ./gradlew clean build bootRun
@@ -11,7 +11,7 @@
 ````
 ![start_spring_boot](https://raw.githubusercontent.com/vvalitsky/spring-boot-graphql-apollo/master/screenshots/start_spring_boot.png)
 
-##### For starting Apollo Federation:
+##### For starting Apollo Federation
 ````
 
 npm install && NODE_ENV=local npm run start-gateway
