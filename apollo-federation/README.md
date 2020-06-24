@@ -4,8 +4,7 @@
 
 ```bash
 
-npm install
-NODE_ENV=local npm run start-gateway
+npm install && NODE_ENV=local npm run start-gateway
 
 ```
 
