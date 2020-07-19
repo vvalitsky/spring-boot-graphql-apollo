@@ -25,10 +25,12 @@ class DataFetchers(
 
     fun updateCarInfo(): DataFetcher<Car> {
         return DataFetcher { env: DataFetchingEnvironment ->
-            carService.updateCarInfo(objectMapper.convertValue(
-                env.getArgument("input"),
-                Car::class.java
-            ))
+            carService.updateCarInfo(
+                objectMapper.convertValue(
+                    env.getArgument("input"),
+                    Car::class.java
+                )
+            )
         }
     }
 }
