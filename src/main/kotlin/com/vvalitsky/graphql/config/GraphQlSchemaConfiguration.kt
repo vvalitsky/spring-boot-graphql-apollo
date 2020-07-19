@@ -56,12 +56,14 @@ class GraphQlSchemaConfiguration(
         val typeRegistry = TypeDefinitionRegistry()
         val schemaParser = SchemaParser()
         val sdl = StringBuilder()
-        listOf(queryResource, mutationResource).forEach(Consumer { resource: Resource ->
-            val schema = loadSchema(resource)
-            typeRegistry.merge(schemaParser.parse(schema))
-            val schemaWithoutServiceField = schema.replace("_service: Service!", "")
-            sdl.append(schemaWithoutServiceField).append("\n")
-        })
+        listOf(queryResource, mutationResource).forEach(
+            Consumer { resource: Resource ->
+                val schema = loadSchema(resource)
+                typeRegistry.merge(schemaParser.parse(schema))
+                val schemaWithoutServiceField = schema.replace("_service: Service!", "")
+                sdl.append(schemaWithoutServiceField).append("\n")
+            }
+        )
         return SchemaGenerator().makeExecutableSchema(typeRegistry, buildRuntimeWiring(sdl.toString()))
     }
 
@@ -71,7 +73,8 @@ class GraphQlSchemaConfiguration(
                 TypeRuntimeWiring.newTypeWiring("Query")
                     .dataFetcher("getCarInfo", dataFetchers.carInfoFetcher())
                     .dataFetcher("_service") {
-                        env -> Service(sdl)
+                        env ->
+                        Service(sdl)
                     }
             )
             .type(
